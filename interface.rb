@@ -116,7 +116,7 @@ class Interface
       station_name = STDIN.gets.chomp
 
       added_station = nil
-      @stations.each { |station| added_station = station if station.name == station_name }
+      @stations.find { |station| added_station = station if station.name == station_name }
 
       case choice_action
       when 1
@@ -140,7 +140,7 @@ class Interface
 
     train_object = nil
     route_object = nil
-    @routes.each { |route| route_object = route if route.route_name == route_name }
+    @routes.find { |route| route_object = route if route.route_name == route_name }
     @trains.find { |train| train_object = train if train.number == train_number }
 
     train_object.add_route(route_object)
@@ -217,7 +217,7 @@ class Interface
         @stations.find { |station| station_object = station if station.name == station_name }
 
         puts "Список поездов на станции: "
-        station_object.trains.each { |train| puts train.number }
+        station_object.trains.find { |train| puts train.number }
       end
     end
   end
