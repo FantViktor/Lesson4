@@ -203,21 +203,19 @@ class Interface
   end
 
   def show_trains_on_station
-    puts "Введите название станции: "
-    station_name = STDIN.gets.chomp
-
     if @stations.empty?
       puts "Сначала необходимо создать станцию"
     else
-      station = @stations.find { |station| station.name == station_name } if @stations
+      puts "Введите станцию"
+      name = gets.chomp
+
+      station = @stations.detect { |station| station.name == name }
       if station.nil?
+
         puts "Такой станции нет"
       else
-        station_object = nil
-        @stations.find { |station| station_object = station if station.name == station_name }
-
         puts "Список поездов на станции: "
-        station_object.trains.find { |train| puts train.number }
+        station.trains.find { |train| puts train.number }
       end
     end
   end
