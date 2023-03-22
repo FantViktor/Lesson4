@@ -215,7 +215,7 @@ class Interface
         puts "Такой станции нет"
       else
         puts "Список поездов на станции: "
-        station.trains.find { |train| puts train.number }
+        station.trains.each { |train| puts train.number }
       end
     end
   end
