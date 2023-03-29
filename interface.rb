@@ -138,10 +138,9 @@ class Interface
     puts "Введите номер поезда: "
     train_number = STDIN.gets.chomp
 
-    train_object = nil
     route_object = nil
     @routes.find { |route| route_object = route if route.route_name == route_name }
-    @trains.find { |train| train_object = train if train.number == train_number }
+    train_object = @trains.find { |train| train.number == train_number }
 
     train_object.add_route(route_object)
     puts "Поезду #{train_object.number} присвоен маршрут #{route_object.route_name}!"
@@ -151,8 +150,7 @@ class Interface
     puts "Введите номер поезда: "
     train_number = STDIN.gets.chomp
 
-    train_object = nil
-    @trains.find { |train| train_object = train if train.number == train_number }
+    train_object = @trains.find { |train| train.number == train_number }
 
     if train_object.train_type == 'грузовой'
       wagon = FreightWagon.new
@@ -168,9 +166,7 @@ class Interface
     puts "Введите номер поезда: "
     train_number = STDIN.gets.chomp
 
-    train_object = nil
-    @trains.find { |train| train_object = train if train.number == train_number }
-
+    train_object = @trains.find { |train| train.number == train_number }
     train_object.pop_wagon
     puts "Текущее количество вагонов: #{train_object.wagons.size}"
   end
@@ -179,8 +175,6 @@ class Interface
     puts "Введите номер поезда: "
     train_number = STDIN.gets.chomp
 
-    #train_object = nil
-    # @trains.find { |train| train_object = train if train.number == train_number }
     train_object = @trains.find { |train| train.number == train_number }
     puts "1 - Переместить вперёд"
     puts "2 - Переместить назад"
@@ -211,7 +205,6 @@ class Interface
 
       station = @stations.detect { |station| station.name == name }
       if station.nil?
-
         puts "Такой станции нет"
       else
         puts "Список поездов на станции: "
@@ -220,6 +213,7 @@ class Interface
     end
   end
 end
+
 
 
 
